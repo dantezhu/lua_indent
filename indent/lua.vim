@@ -113,25 +113,25 @@ function GetLuaIndent()
 "     val(),
 " )
 
-" DEL-BEGIN by dantezhu in 2014-10-06 17:50:18
-  "Special case for parentheses (indent the closing paren)
-  "If the previous line closed a paren, dedent
-  call cursor(plnum - 1, col([plnum - 1, '$']))
-  let parnum = searchpair('(', '', ')', 'mWr',
-        \ "IsValidMatch()", plnum)
-  if parnum > 0
-    "echom parnum . "closed parens above"
-    let i -= 1
-  endif
-
-  "If this line closed a paren, indent
-  call cursor(plnum, col([plnum, '$']))
-  let parnum = searchpair('(', '', ')', 'mWr',
-        \ "IsValidMatch()", v:lnum)
-  if parnum > 0
-    "echom parnum . "closed parens here"
-    let i += 1
-  endif
+" DEL-BEGIN by dantezhu in 2014-10-06 18:06:36
+  " "Special case for parentheses (indent the closing paren)
+  " "If the previous line closed a paren, dedent
+  " call cursor(plnum - 1, col([plnum - 1, '$']))
+  " let parnum = searchpair('(', '', ')', 'mWr',
+  "       \ "IsValidMatch()", plnum)
+  " if parnum > 0
+  "   "echom parnum . "closed parens above"
+  "   let i -= 1
+  " endif
+  "
+  " "If this line closed a paren, indent
+  " call cursor(plnum, col([plnum, '$']))
+  " let parnum = searchpair('(', '', ')', 'mWr',
+  "       \ "IsValidMatch()", v:lnum)
+  " if parnum > 0
+  "   "echom parnum . "closed parens here"
+  "   let i += 1
+  " endif
 " DEL-END
  
   "restore cursor
